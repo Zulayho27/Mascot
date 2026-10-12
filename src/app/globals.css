@@ -66,6 +66,11 @@
 html { scroll-behavior: smooth; }
 body { background: var(--background); color: var(--foreground); }
 h1, h2, h3 { text-wrap: balance; }
+/* iOS Safari увеличивает страницу, если шрифт поля ввода меньше 16px */
+@media (max-width: 767px) {
+  input, textarea, select { font-size: 16px !important; }
+}
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 .sec-tint { background: color-mix(in oklab, var(--sec) 14%, transparent); }
 .sec-text { color: color-mix(in oklab, var(--sec) 80%, var(--foreground)); }
 @keyframes rise { from { transform: translateY(6px); opacity: .6 } to { transform: none; opacity: 1 } }
