@@ -1,0 +1,14 @@
+# Lokal ishlash uchun PostgreSQL: docker compose up -d
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: hamida
+      POSTGRES_PASSWORD: hamida
+      POSTGRES_DB: hamida
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:

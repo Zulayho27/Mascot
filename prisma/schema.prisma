@@ -1,0 +1,25 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+// PostgreSQL (Neon, Vercel Postgres, Supabase yoki lokal docker compose)
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String    @id @default(cuid())
+  login        String    @unique
+  name         String
+  passwordHash String
+  createdAt    DateTime  @default(now())
+  workbook     Workbook?
+}
+
+model Workbook {
+  userId    String   @id
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  data      String
+  updatedAt DateTime @updatedAt
+}

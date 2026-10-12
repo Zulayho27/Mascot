@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-ring: var(--ring);
+  --color-danger: var(--danger);
+  --color-warn: var(--warn);
+  --color-hero: var(--hero);
+  --color-hero-foreground: var(--hero-foreground);
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  /* Siyoh-ko‘k asos, za'faron urg‘u; har bir bo‘lim o‘z rangida (--sec) */
+  --background: #f3f5fa;
+  --foreground: #16213a;
+  --card: #ffffff;
+  --muted: #e9edf5;
+  --muted-foreground: #5d6a84;
+  --border: #dce2ee;
+  --primary: #1b2a4a;
+  --primary-foreground: #ffffff;
+  --secondary: #e7ecf8;
+  --secondary-foreground: #1b2a4a;
+  --accent: #e8962a;
+  --ring: #4f7cf066;
+  --danger: #d0453b;
+  --warn: #c7841c;
+  --hero: #1b2a4a;
+  --hero-foreground: #f3f5fa;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0d1322;
+    --foreground: #e7ecf6;
+    --card: #151d31;
+    --muted: #1e283f;
+    --muted-foreground: #95a2bd;
+    --border: #26324d;
+    --primary: #f2b54f;
+    --primary-foreground: #1a1405;
+    --secondary: #1e2944;
+    --secondary-foreground: #dbe4ff;
+    --accent: #f2b54f;
+    --ring: #f2b54f66;
+    --danger: #ef7b72;
+    --warn: #f0be5c;
+    --hero: #18233f;
+    --hero-foreground: #eef2fb;
+    color-scheme: dark;
+  }
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--background); color: var(--foreground); }
+h1, h2, h3 { text-wrap: balance; }
+.sec-tint { background: color-mix(in oklab, var(--sec) 14%, transparent); }
+.sec-text { color: color-mix(in oklab, var(--sec) 80%, var(--foreground)); }
+@keyframes rise { from { transform: translateY(6px); opacity: .6 } to { transform: none; opacity: 1 } }
+.rise { animation: rise .35s ease-out both; }
+@media (prefers-reduced-motion: reduce) { .rise { animation: none; } html { scroll-behavior: auto; } }
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: #fff; color: #000; }
+  .print-area { padding: 0 !important; }
+  .print-break { break-before: page; }
+  textarea, input { border: none !important; }
+}
